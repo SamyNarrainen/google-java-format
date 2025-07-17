@@ -14,17 +14,17 @@
 
 package com.google.googlejavaformat.java;
 
-import static com.google.common.collect.ImmutableList.toImmutableList;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.DiscreteDomain;
 import com.google.common.collect.ImmutableList;
+import static com.google.common.collect.ImmutableList.toImmutableList;
 import com.google.common.collect.Range;
 import com.google.common.collect.RangeSet;
 import com.google.common.collect.TreeRangeSet;
-import java.util.ArrayList;
-import java.util.List;
 
 /** Formats a subset of a compilation unit. */
 public class SnippetFormatter {

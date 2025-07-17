@@ -36,7 +36,11 @@ public abstract class JavaFormatterOptions {
     GOOGLE(1),
 
     /** The AOSP-compliant configuration. */
-    AOSP(2);
+    AOSP(2),
+    
+    /** A slightly customised implementation of the Google Java Style configuration */
+    CUSTOM_GOOGLE(2),
+    ;
 
     private final int indentationMultiplier;
 
@@ -69,7 +73,7 @@ public abstract class JavaFormatterOptions {
   /** Returns a builder for {@link JavaFormatterOptions}. */
   public static Builder builder() {
     return new AutoValue_JavaFormatterOptions.Builder()
-        .style(Style.GOOGLE)
+        .style(Style.CUSTOM_GOOGLE)
         .formatJavadoc(true)
         .reorderModifiers(true);
   }
