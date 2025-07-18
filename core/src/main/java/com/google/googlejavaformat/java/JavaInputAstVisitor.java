@@ -1207,7 +1207,8 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
     }
     if (node.getElseStatement() != null) {
       if (followingBlock) {
-        builder.space();
+        // DEVIATION: the Google standard requires a space but we require a forced break.
+        builder.forcedBreak();
       } else {
         builder.forcedBreak();
       }
