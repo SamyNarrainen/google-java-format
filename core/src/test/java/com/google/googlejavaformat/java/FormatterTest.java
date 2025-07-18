@@ -14,27 +14,28 @@
 
 package com.google.googlejavaformat.java;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assertWithMessage;
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.junit.Assert.fail;
-
-import com.google.common.base.Joiner;
-import com.google.common.io.CharStreams;
-import com.google.googlejavaformat.java.JavaFormatterOptions.Style;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import static org.junit.Assert.fail;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import com.google.common.base.Joiner;
+import com.google.common.io.CharStreams;
+import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.assertWithMessage;
+import com.google.googlejavaformat.java.JavaFormatterOptions.Style;
 
 /** Integration test for google-java-format. */
 @RunWith(JUnit4.class)
@@ -468,9 +469,9 @@ public final class FormatterTest {
 
     // Just fixing imports preserves whitespace around imports.
     assertThat(RemoveUnusedImports.removeUnusedImports(withBlank)).isEqualTo(withBlank);
-    assertThat(ImportOrderer.reorderImports(withBlank, Style.GOOGLE)).isEqualTo(withBlank);
+    assertThat(ImportOrderer.reorderImports(withBlank, Style.CUSTOM_GOOGLE)).isEqualTo(withBlank);
     assertThat(RemoveUnusedImports.removeUnusedImports(withoutBlank)).isEqualTo(withoutBlank);
-    assertThat(ImportOrderer.reorderImports(withoutBlank, Style.GOOGLE)).isEqualTo(withoutBlank);
+    assertThat(ImportOrderer.reorderImports(withoutBlank, Style.CUSTOM_GOOGLE)).isEqualTo(withoutBlank);
   }
 
   @Test

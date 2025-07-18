@@ -13,8 +13,12 @@
  */
 package com.google.googlejavaformat.java;
 
-import static com.google.common.collect.Iterables.getLast;
-import static com.google.common.primitives.Booleans.trueFirst;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.stream.Stream;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Preconditions;
@@ -22,16 +26,12 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
+import static com.google.common.collect.Iterables.getLast;
+import static com.google.common.primitives.Booleans.trueFirst;
 import com.google.googlejavaformat.Newlines;
 import com.google.googlejavaformat.java.JavaFormatterOptions.Style;
 import com.google.googlejavaformat.java.JavaInput.Tok;
 import com.sun.tools.javac.parser.Tokens.TokenKind;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.stream.Stream;
 
 /** Orders imports in Java source code. */
 public class ImportOrderer {
@@ -59,7 +59,7 @@ public class ImportOrderer {
    */
   @Deprecated
   public static String reorderImports(String text) throws FormatterException {
-    return reorderImports(text, Style.GOOGLE);
+    return reorderImports(text, Style.CUSTOM_GOOGLE);
   }
 
   private String reorderImports() throws FormatterException {
@@ -172,7 +172,7 @@ public class ImportOrderer {
     this.text = text;
     this.toks = toks;
     this.lineSeparator = Newlines.guessLineSeparator(text);
-    if (style.equals(Style.GOOGLE)) {
+    if (style.equals(Style.CUSTOM_GOOGLE)) {
       this.importComparator = GOOGLE_IMPORT_COMPARATOR;
       this.shouldInsertBlankLineFn = ImportOrderer::shouldInsertBlankLineGoogle;
     } else if (style.equals(Style.AOSP)) {

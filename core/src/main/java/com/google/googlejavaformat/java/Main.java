@@ -14,19 +14,14 @@
 
 package com.google.googlejavaformat.java;
 
-import static java.lang.Math.min;
-import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.util.Comparator.comparing;
-
-import com.google.common.io.ByteStreams;
-import com.google.common.util.concurrent.MoreExecutors;
-import com.google.googlejavaformat.java.JavaFormatterOptions.Style;
 import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import static java.lang.Math.min;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,11 +29,16 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import static java.util.Comparator.comparing;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import com.google.common.io.ByteStreams;
+import com.google.common.util.concurrent.MoreExecutors;
+import com.google.googlejavaformat.java.JavaFormatterOptions.Style;
 
 /** The main class for the Java formatter CLI. */
 public final class Main {
@@ -118,7 +118,7 @@ public final class Main {
 
     JavaFormatterOptions options =
         JavaFormatterOptions.builder()
-            .style(parameters.aosp() ? Style.AOSP : Style.GOOGLE)
+            .style(parameters.aosp() ? Style.AOSP : Style.CUSTOM_GOOGLE)
             .formatJavadoc(parameters.formatJavadoc())
             .build();
 

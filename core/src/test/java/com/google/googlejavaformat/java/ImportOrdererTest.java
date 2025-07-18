@@ -14,19 +14,20 @@
 
 package com.google.googlejavaformat.java;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assertWithMessage;
-
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableList;
-import com.google.googlejavaformat.java.JavaFormatterOptions.Style;
 import java.util.Arrays;
 import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
+import com.google.common.base.Joiner;
+import com.google.common.collect.ImmutableList;
+import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.assertWithMessage;
+import com.google.googlejavaformat.java.JavaFormatterOptions.Style;
 
 /** Tests for {@link ImportOrderer}. */
 @RunWith(Enclosed.class)
@@ -558,7 +559,7 @@ public class ImportOrdererTest {
     @Test
     public void reorder() throws FormatterException {
       try {
-        String output = ImportOrderer.reorderImports(input, Style.GOOGLE);
+        String output = ImportOrderer.reorderImports(input, Style.CUSTOM_GOOGLE);
         assertWithMessage("Expected exception").that(reordered).doesNotMatch("^!!");
         assertWithMessage(input).that(output).isEqualTo(reordered);
       } catch (FormatterException e) {
