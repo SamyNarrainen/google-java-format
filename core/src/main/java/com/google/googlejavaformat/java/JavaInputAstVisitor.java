@@ -1180,7 +1180,8 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
     for (int i = 0; i < expressionsN; i++) {
       if (afterFirstToken) {
         if (followingBlock) {
-          builder.space();
+          // DEVEATION: the Google standard requires a space but we require a forced break.
+          builder.forcedBreak();
         } else {
           builder.forcedBreak();
         }
