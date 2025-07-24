@@ -88,7 +88,7 @@ import com.sun.tools.javac.util.Options;
 public final class Formatter {
   
   // Effectively infinite line length, to avoid forced wrapping.
-  public static final int MAX_LINE_LENGTH = 500;
+  public static final int MAX_LINE_LENGTH = 180;
 
   static final Range<Integer> EMPTY_RANGE = Range.closedOpen(-1, -1);
 
