@@ -4057,12 +4057,10 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
    * currently true if all annotations are parameterless annotations.
    */
   private static Direction fieldAnnotationDirection(ModifiersTree modifiers) {
-    for (AnnotationTree annotation : modifiers.getAnnotations()) {
-      if (!annotation.getArguments().isEmpty()) {
-        return Direction.VERTICAL;
-      }
-    }
-    return Direction.HORIZONTAL;
+    // DEVEATION: The Google Java Style Guide can allow fields to have horizontal annotations in some conditions.
+    // E.g. @Deprecated private static int myField;
+    // We instead require vertical annotations for fields, as it is more consistent with the rest of the codebase.
+    return Direction.VERTICAL;
   }
 
   /**
