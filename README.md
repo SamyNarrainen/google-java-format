@@ -3,6 +3,12 @@ This project is a slightly modified version of `google-java-format`, a program t
 
 [Google Java Style]: https://google.github.io/styleguide/javaguide.html
 
+## Modifications
+* Field annotations are forced to be vertical.
+* `else` and `catch` block statements start on a new line.
+* The default number of white spaces is 4.
+* The maximum number of characters per line is 180.
+
 ## Using the formatter
 
 ### From the command-line
