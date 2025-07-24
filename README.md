@@ -1,7 +1,5 @@
-# google-java-format
-
-`google-java-format` is a program that reformats Java source code to comply with
-[Google Java Style][].
+# Modified google-java-format
+This project is a slightly modified version of `google-java-format`, a program that reformats Java source code to comply with [Google Java Style][].
 
 [Google Java Style]: https://google.github.io/styleguide/javaguide.html
 
