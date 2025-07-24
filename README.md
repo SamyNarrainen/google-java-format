@@ -5,7 +5,7 @@ This project is a slightly modified version of `google-java-format`, a program t
 
 ## Modifications
 * Field annotations are forced to be vertical.
-* `else` and `catch` block statements start on a new line.
+* `else`, `catch` and `finally` block statements start on a new line.
 * The default number of white spaces is 4.
 * The maximum number of characters per line is 180.
 

@@ -2166,7 +2166,8 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
       visitCatchClause(catchClause, AllowTrailingBlankLine.valueOf(trailingClauses));
     }
     if (node.getFinallyBlock() != null) {
-      builder.space();
+      // DEVIATION: the Google standard requires a space but we require a forced break.
+      builder.forcedBreak();
       token("finally");
       builder.space();
       visitBlock(
