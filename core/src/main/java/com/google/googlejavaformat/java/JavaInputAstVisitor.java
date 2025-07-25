@@ -1216,7 +1216,8 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
       token("else");
       visitStatement(
           node.getElseStatement(),
-          CollapseEmptyOrNot.NO,
+          // Deveation: these statements now collapse.
+          CollapseEmptyOrNot.YES,
           AllowLeadingBlankLine.YES,
           AllowTrailingBlankLine.NO);
     }

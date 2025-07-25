@@ -8,7 +8,7 @@ This project is a slightly modified version of `google-java-format`, a program t
 * `else`, `catch` and `finally` block statements start on a new line.
 * The default number of white spaces is 4.
 * The maximum number of characters per line is 180.
-* Empty `{}` blocks for `catch` statements are collapsed.
+* Empty `{}` blocks for `catch` and `if` statements are collapsed.
 * Assignments remain on the same line unless contents excede character limit.
 
 ## Using the formatter
