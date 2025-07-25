@@ -662,7 +662,8 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
     scan(node.getVariable(), null);
     builder.space();
     splitToken(operatorName(node));
-    builder.breakOp(" ");
+    builder.space(); // DEVIATION: assignments now aim to be on the same line as the variable.
+    //builder.breakOp(" ");
     scan(node.getExpression(), null);
     builder.close();
     return null;
