@@ -2706,7 +2706,8 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
     token(")");
     builder.space();
     visitBlock(
-        node.getBlock(), CollapseEmptyOrNot.NO, AllowLeadingBlankLine.YES, allowTrailingBlankLine);
+        // DEVIATION: the Google standard doesn't collapse here but we do.
+        node.getBlock(), CollapseEmptyOrNot.YES, AllowLeadingBlankLine.YES, allowTrailingBlankLine);
   }
 
   /** Formats a union type declaration in a catch clause. */
