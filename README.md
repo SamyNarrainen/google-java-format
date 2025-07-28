@@ -10,6 +10,7 @@ This project is a slightly modified version of `google-java-format`, a program t
 * The maximum number of characters per line is 180.
 * Empty `{}` blocks for `catch` and `if` statements are collapsed.
 * Assignments remain on the same line unless contents excede character limit.
+* Comments starting with `//#` are preserved and a whitespace character is not injected.
 
 ## Using the formatter
 

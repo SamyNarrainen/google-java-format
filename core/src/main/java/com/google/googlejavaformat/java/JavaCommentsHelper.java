@@ -14,17 +14,18 @@
 
 package com.google.googlejavaformat.java;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
 import com.google.googlejavaformat.CommentsHelper;
 import com.google.googlejavaformat.Input.Tok;
 import com.google.googlejavaformat.Newlines;
 import com.google.googlejavaformat.java.javadoc.JavadocFormatter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /** {@code JavaCommentsHelper} extends {@link CommentsHelper} to rewrite Java comments. */
 public final class JavaCommentsHelper implements CommentsHelper {
@@ -110,8 +111,9 @@ public final class JavaCommentsHelper implements CommentsHelper {
 
   // Preserve special `//noinspection` and `//$NON-NLS-x$` comments used by IDEs, which cannot
   // contain leading spaces.
+  // Deveation: '//#comment' is preserved as well.
   private static final Pattern LINE_COMMENT_MISSING_SPACE_PREFIX =
-      Pattern.compile("^(//+)(?!noinspection|\\$NON-NLS-\\d+\\$)[^\\s/]");
+      Pattern.compile("^(//+)(?!noinspection|\\$NON-NLS-\\d+\\$|#)[^\\s/]");
 
   private List<String> wrapLineComments(List<String> lines, int column0) {
     List<String> result = new ArrayList<>();
