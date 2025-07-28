@@ -2019,7 +2019,34 @@ public class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
       case STATEMENT:
         token(":");
         builder.open(plusTwo);
-        visitStatements(node.getStatements());
+        // Check if we have a single block statement that should be formatted inline
+        List<? extends StatementTree> statements = node.getStatements();
+        if (statements.size() == 1 && statements.get(0).getKind() == BLOCK) {
+          BlockTree blockStatement = (BlockTree) statements.get(0);
+          
+          // Format with inline braces: case X: { ... }
+          builder.space();
+          token("{");
+          
+          if (blockStatement.getStatements().isEmpty()) {
+            // Empty block
+            builder.blankLineWanted(BlankLineWanted.NO);
+            token("}");
+          } else {
+            // Non-empty block
+            builder.open(plusTwo);
+            builder.forcedBreak();
+            builder.blankLineWanted(BlankLineWanted.PRESERVE);
+            visitStatements(blockStatement.getStatements());
+            builder.close();
+            builder.forcedBreak();
+            builder.blankLineWanted(BlankLineWanted.NO);
+            token("}");
+          }
+        } else {
+          // Regular statements - use existing logic
+          visitStatements(statements);
+        }
         builder.close();
         builder.close();
         break;
